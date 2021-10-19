@@ -14,11 +14,16 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
+
+Route::group(array(['middleware' => 'guest'], ['except' => 'logout']), function(){
+    Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginFormForSlash']);
+    Auth::routes(); //register, login, reset password
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

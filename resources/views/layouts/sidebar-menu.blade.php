@@ -9,27 +9,65 @@
         </router-link>
       </li>
 
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <router-link to="/products" class="nav-link">
           <i class="nav-icon fas fa-list orange"></i>
           <p>
             Product
           </p>
         </router-link>
+      </li> --}}
+
+      <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+          <i class="fa fa-envelope nav-icon green"></i>
+          <p>
+            Greeting Cards
+            <i class="right fas fa-angle-left"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+
+          <li class="nav-item">
+            <router-link to="/greeting_card/index" class="nav-link">
+              <i class="nav-icon fas fa-circle"></i>
+              <p>
+                Send A Card
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/greeting_card/received" class="nav-link">
+              <i class="nav-icon fas fa-circle"></i>
+              <p>
+                Received Cards
+              </p>
+            </router-link>
+          </li>
+
+            <li class="nav-item">
+              <router-link to="/greeting_card/sent" class="nav-link">
+                <i class="nav-icon fas fa-circle"></i>
+                <p>
+                 Sent Cards
+                </p>
+              </router-link>
+            </li>
+        </ul>
       </li>
 
       @can('isAdmin')
-        <li class="nav-item">
-          <router-link to="/users" class="nav-link">
-            <i class="fa fa-users nav-icon blue"></i>
-            <p>Users</p>
-          </router-link>
-        </li>
+      <li class="nav-item">
+        <router-link to="/users" class="nav-link">
+          <i class="fa fa-users nav-icon blue"></i>
+          <p>Users</p>
+        </router-link>
+      </li>
       @endcan
 
-      
 
-      @can('isAdmin')
+
+      {{-- @can('isAdmin')
       <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-cog green"></i>
@@ -56,7 +94,7 @@
               </p>
             </router-link>
           </li>
-          
+
             <li class="nav-item">
               <router-link to="/developer" class="nav-link">
                   <i class="nav-icon fas fa-cogs white"></i>
@@ -68,9 +106,9 @@
         </ul>
       </li>
 
-      @endcan
-      
-      
+      @endcan --}}
+
+
 
       <li class="nav-item">
         <a href="#" class="nav-link" onclick="event.preventDefault();

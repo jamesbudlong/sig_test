@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Gate;
 
-
 class UserController extends BaseController
 {
     /**
@@ -98,5 +97,17 @@ class UserController extends BaseController
         $user->delete();
 
         return $this->sendResponse([$user], 'User has been Deleted');
+    }
+
+    /**
+     * Fetch all users for dropdown HTML.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getUserDropdown()
+    {
+        $logged_in_user = auth()->user()->id;
+        $users = User::where('id', '!=', $logged_in_user)->pluck('name', 'id');
+        return $this->sendResponse($users, 'Users list');
     }
 }
